@@ -8,8 +8,8 @@ import java.awt.Point;
 public class MapBlock 
 {
 	private Point mapLocation;
-	private int length;
-	private int width;
+	private int lengthX;
+	private int widthY;
 
 	/**
 	 * @param position
@@ -33,21 +33,21 @@ public class MapBlock
 		this.mapLocation = mapLocation;
 	}
 	/**
-	 * @return returns the length of the block.
+	 * @return returns the length of the block, the length should be considered the length along the x axis
 	 */
 	public int getLength() {
-		return length;
+		return lengthX;
 	}
 	private void setLength(int length) {
-		this.length = length;
+		this.lengthX = length;
 	}
 	/**
-	 * @return returns the width of the block
+	 * @return returns the width of the block, the width should be considered the length along the y axis
 	 */
 	public int getWidth() {
-		return width;
+		return widthY;
 	}
 	private void setWidth(int width) {
-		this.width = width;
+		this.widthY = width;
 	}
 }
