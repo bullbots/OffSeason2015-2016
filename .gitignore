@@ -1,3 +1,5 @@
 *.class
 ./GameProject/.classpath
 .project
+GameProject/.gitignore
+GameProject/.settings/
