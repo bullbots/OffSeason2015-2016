@@ -8,8 +8,8 @@ import java.awt.Point;
 public class MapBlock 
 {
 	private Point mapLocation;
-	private int lengthX;
-	private int widthY;
+	private int lengthX;//Consider this distance along the x axis
+	private int widthY;//Consider this the distance along the y axis
 
 	/**
 	 * @param position
