@@ -21,5 +21,7 @@ public class MapMaster {
 	private static void fillList(LinkedList<MapBlock> blocks){
 		blocks.add(new MapBlock(new Point(0,0), 10, 800));
 		blocks.add(new MapBlock(new Point(0,0), 600, 10));
+		blocks.add(new MapBlock(new Point(790,0),600, 10 ));
+		blocks.add(new MapBlock(new Point(0,590),800, 10));
 	}
 }
