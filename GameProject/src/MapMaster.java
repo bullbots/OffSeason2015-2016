@@ -8,6 +8,8 @@ import java.util.LinkedList;
  */
 public class MapMaster {
 	private static int mapDensity=50;
+	private final static int MAX_X_DIST=600;
+	private final static int MAX_Y_DIST=800;
 	private static boolean[][] occupiedArray = new boolean[800][600];
 	LinkedList<MapBlock> blocks= new LinkedList<MapBlock>();
 	
@@ -21,17 +23,10 @@ public class MapMaster {
 	}
 	
 	private static void fillList(LinkedList<MapBlock> blocks){
-		blocks.add(new MapBlock(new Point(0,0), 10, 800));
-		fillOccupiedArrayIndex(new Point(0,0), 10, 800);
-		blocks.add(new MapBlock(new Point(0,0), 600, 10));
-		fillOccupiedArrayIndex(new Point(0,0), 600, 10);
-		blocks.add(new MapBlock(new Point(790,0),600, 10 ));
-		fillOccupiedArrayIndex(new Point(790,0),600, 10 );
-		blocks.add(new MapBlock(new Point(0,590),800, 10));
-		fillOccupiedArrayIndex(new Point(0,590),800, 10);
-		for(int i=0; i<mapDensity; i++){
-			
-		}
+		blocks.add(new MapBlock(new Point(0,0), MAX_X_DIST, 10 ));
+		blocks.add(new MapBlock(new Point(0,0), 10, MAX_Y_DIST));
+		blocks.add(new MapBlock(new Point(0, MAX_Y_DIST-10), MAX_X_DIST, 10));
+		blocks.add(new MapBlock(new Point(MAX_X_DIST-10,0), 10, MAX_Y_DIST));
 	}
 
 	/**
@@ -42,12 +37,6 @@ public class MapMaster {
 	}
 
 	private static void fillOccupiedArrayIndex(Point start,int numX, int numY){
-		int startX=start.x;
-		int startY=start.y;
-		for(int i=0; i<numX; i++){
-			for(int j=0; j<numY; j++){
-				occupiedArray[i][j] =true;
-			}
-		}
+		
 	}
 }
