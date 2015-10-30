@@ -1,6 +1,6 @@
 public class enemy{
 
-Map map= new Map();
+//Map map= new Map();
 double epositionx, epositiony;
 public void getenemyx(){
 epositionx=0;
