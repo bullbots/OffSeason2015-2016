@@ -33,9 +33,9 @@ public class MapMaster {
 		for(int i=0; i<mapDensity;i++){
 			downOrUp=rand.nextInt(99)+1;
 			if(downOrUp<=50){
-				blocks.add(new MapBlock(new Point(rand.nextInt(800), rand.nextInt(600)), 10, 100));
+				blocks.add(new MapBlock(new Point(rand.nextInt(790), rand.nextInt(500)), 10, 100));
 			}else{
-				blocks.add(new MapBlock(new Point(rand.nextInt(800), rand.nextInt(600)), 100, 10));
+				blocks.add(new MapBlock(new Point(rand.nextInt(700), rand.nextInt(590)), 100, 10));
 			}
 		}
 	}
