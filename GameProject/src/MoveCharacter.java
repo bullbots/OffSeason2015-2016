@@ -11,14 +11,13 @@ public class MoveCharacter {
 		double magnitude = 2;
 		//double will eventually be taken from User Input class
 		
-		double ycom = Math.sin(direction);
+		double yComponent = Math.sin(direction);
 		boolean canStepY = true;
 		//canStepY depends on map
 		if (canStepY = true){
-			p1Y = (int)(ycom * magnitude) + p1Y;
+			p1Y = (int)(yComponent * magnitude) + p1Y;
 		}
 		return p1Y;
-		
 	}
 	
 	public int p1MoveX(){
@@ -29,11 +28,11 @@ public class MoveCharacter {
 		double magnitude = 2;
 		//double will eventually be taken from User Input class
 		
-		double xcom = Math.cos(direction);
+		double xComponent = Math.cos(direction);
 		boolean canStepX = true;
 		//canStepX depends on map
 		if (canStepX = true){
-			p1X = (int)(xcom * magnitude) + p1X;
+			p1X = (int)(xComponent * magnitude) + p1X;
 		}
 		return p1X;
 	}
