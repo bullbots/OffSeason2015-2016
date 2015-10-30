@@ -1,7 +1,4 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.LinkedList;
-
 import javax.swing.JPanel;
 
 
@@ -10,15 +7,14 @@ import javax.swing.JPanel;
  * @author Tyler
  *
  */
-public class GameUpdater extends JPanel implements Runnable, ActionListener{
+@SuppressWarnings("serial")
+public class GameUpdater extends JPanel implements Runnable{
 
+	/**
+	 * This list contains a set of "blocks" that will create the map, this variable should only be called 
+	 * To be painted outisde of the updater thread, the updater thread will control the updates on the list itself.
+	 */
 	public static LinkedList<MapBlock> blockList;
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("GamePanel called Action");
-		GamePanel gamePanel = new GamePanel();
-		System.out.println("Action Even list size: "+blockList.size());
-		gamePanel.repaint();
-	}
 
 	@Override
 	public void run() {
@@ -26,15 +22,10 @@ public class GameUpdater extends JPanel implements Runnable, ActionListener{
 		blockList=map.getBlockList();
 		System.out.println("This thread has started: "+Thread.currentThread());
 		while(true){
-			System.out.println("UpdaterThread running");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			blockList.clear();
+			//All update code goes here
+			
 		}
 	}
+	
 
 }

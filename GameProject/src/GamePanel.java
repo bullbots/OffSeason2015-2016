@@ -4,9 +4,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
 import java.util.ListIterator;
-
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -33,7 +31,6 @@ public class GamePanel extends JPanel
 	{
 		super.paintComponent(g);
 		ListIterator<MapBlock> itr=GameUpdater.blockList.listIterator();
-		System.out.println("Call to paintComponent in GamePanel");
 		while(itr.hasNext()){
 			MapBlock tmpBlock = itr.next();
 			Point currentPoint = tmpBlock.getMapLocation();
@@ -41,10 +38,21 @@ public class GamePanel extends JPanel
 			g.fill3DRect(currentPoint.x, currentPoint.y, tmpBlock.getLength(), tmpBlock.getWidth(), true);
 		}
 	}
+	/**
+	 * This method should be invoked right after the instantiation of the game panel.
+	 */
 	public void startGamePanel(){
 		this.setPreferredSize(new Dimension(800,600));
-		time = new Timer(10, new GameUpdater());
+		time = new Timer(10, new Repainter());
 		GPthread.start();
 		time.start();
+	}
+	
+	private class Repainter implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			repaint();
+		}
+		
 	}
 }
