@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 
 /**
@@ -15,13 +16,14 @@ public class GamePanel extends JPanel
 	LinkedList<MapBlock> mapLinked = map.getBlockList();
 	
 	Object mapArray[] = new Object[mapLinked.size()];
+	Timer time;
 	
 	/**
 	 * Constructor for the main game panel.
 	 */
 	public GamePanel()
 	{
-		
+		time=new Timer(10, new UpdateGame());
 	}
 	
 	public void paintComponent(Graphics g)
