@@ -5,14 +5,10 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import javax.xml.bind.JAXBException;
-
-import org.xml.sax.SAXException;
-
-import com.sun.xml.internal.bind.v2.runtime.reflect.ListIterator;
 
 
 /**
@@ -22,46 +18,33 @@ import com.sun.xml.internal.bind.v2.runtime.reflect.ListIterator;
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel 
 {
-	Timer time;
-	private boolean oneTimeSetup=false;
 	
+	Thread GPthread = new Thread(new GameUpdater());
+	Timer time;
 	/**
 	 * Constructor for the main game panel.
 	 */
 	public GamePanel()
 	{
-		this.setPreferredSize(new Dimension(800,600));
-		time=new Timer(1000, new UpdateGame());
-		time.start();
+		
 	}
 	
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		GameDataHolder gameUpdater = new GameDataHolder();
-		java.util.ListIterator<MapBlock> itr;
-		if(gameUpdater.isFirstStartUp()){
-			itr = gameUpdater.getFreshMap().listIterator();
-		}else{
-			itr = gameUpdater.getMapLinked().listIterator();
-		}
-		System.out.println("paintComponent Called");
-		System.out.println("paintComponent list size: "+gameUpdater.getMapLinked().size());
+		ListIterator<MapBlock> itr=GameUpdater.blockList.listIterator();
+		System.out.println("Call to paintComponent in GamePanel");
 		while(itr.hasNext()){
-			MapBlock curr= itr.next();
-			Point tmpPoint = curr.getMapLocation();
+			MapBlock tmpBlock = itr.next();
+			Point currentPoint = tmpBlock.getMapLocation();
 			g.setColor(Color.BLACK);
-			g.fill3DRect(tmpPoint.x, tmpPoint.y, curr.getLength(), curr.getWidth(), true);
+			g.fill3DRect(currentPoint.x, currentPoint.y, tmpBlock.getLength(), tmpBlock.getWidth(), true);
 		}
 	}
-//	private class UpdateGame implements ActionListener{
-//
-//		public void actionPerformed(ActionEvent e) {
-//			System.out.println("Action invoked");
-//			mapLinked.clear();
-//			repaint();
-//			System.out.println("Action Completed");
-//		}
-//
-//	}	
+	public void startGamePanel(){
+		this.setPreferredSize(new Dimension(800,600));
+		time = new Timer(10, new GameUpdater());
+		GPthread.start();
+		time.start();
+	}
 }

@@ -16,10 +16,12 @@ public class GameLaunch {
 		JFrame frame = new JFrame();
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(new GamePanel());
+		GamePanel gamePanel = new GamePanel();
+		gamePanel.startGamePanel();
+		frame.getContentPane().add(gamePanel);
 		
-		frame.setVisible(true);
 		frame.pack();
+		frame.setVisible(true);
 				
 	}
 }
