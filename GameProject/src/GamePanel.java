@@ -24,7 +24,7 @@ public class GamePanel extends JPanel
 	 */
 	public GamePanel()
 	{
-		
+		this.addKeyListener(new UI());
 	}
 	
 	public void paintComponent(Graphics g)
@@ -48,7 +48,6 @@ public class GamePanel extends JPanel
 		time = new Timer(10, new Repainter());
 		GPthread.start();
 		time.start();
-		this.addKeyListener(new UI());
 	}
 	
 	private class Repainter implements ActionListener{
