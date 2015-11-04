@@ -1,7 +1,17 @@
+import java.awt.Point;
+import java.util.ArrayList;
+
+
+
 public class MoveCharacter {
 	int p1X = 50;
 	int p1Y = 45;
 
+	public Point p1Move(Point location, ArrayList<String> keys){
+		
+		
+		return location;
+	}
 	
 	public int p1MoveY(){
 		//finds the amount of movement in the Y direction
@@ -19,7 +29,6 @@ public class MoveCharacter {
 		}
 		return p1Y;
 	}
-	
 	public int p1MoveX(){
 		//finds the amount of movement in the X direction
 		
