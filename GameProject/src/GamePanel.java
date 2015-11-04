@@ -4,7 +4,11 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.ListIterator;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -56,5 +60,37 @@ public class GamePanel extends JPanel
 			repaint();
 		}
 		
+	}
+	private class UI implements KeyListener{
+
+		ArrayList<String> keysHeld = new ArrayList<String>();
+		@Override
+		public void keyPressed(KeyEvent arg0) {
+			System.out.println("pressed");
+			String key = KeyEvent.getKeyText(arg0.getKeyCode());
+			if (key == "w" || key == "a" || key == "s" || key == "d") 
+			{
+					GameUpdater.keysHeld.add(KeyEvent.getKeyText(arg0.getKeyCode()));
+			}
+			for (String x : GameUpdater.keysHeld) {
+				System.out.println(x);
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			keysHeld.remove(KeyEvent.getKeyText(arg0.getKeyCode()));
+			System.out.println("Released");
+		}
+
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			System.out.println("keyTyped");
+		}
+		
+		public void display(KeyEvent arg0) {
+			char c = arg0.getKeyChar();
+			System.out.println(c);
+		}
 	}
 }

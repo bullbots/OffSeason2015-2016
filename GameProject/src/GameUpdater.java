@@ -42,6 +42,9 @@ public class GameUpdater extends JPanel implements Runnable{
 		
 		while(true){
 			//All update code goes here
+			for(int x=0; x<keysHeld.size();x++){
+				System.out.println(keysHeld.get(x));
+			}
 			characterLocation=characterData.p1Move(characterLocation,keysHeld);
 		}
 	}
