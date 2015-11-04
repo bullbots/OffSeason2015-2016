@@ -31,6 +31,8 @@ public class GamePanel extends JPanel
 	{
 		super.paintComponent(g);
 		ListIterator<MapBlock> itr=GameUpdater.blockList.listIterator();
+		g.setColor(Color.BLUE);
+		g.fillOval(GameUpdater.characterLocation.x, GameUpdater.characterLocation.y, 10, 10);
 		while(itr.hasNext()){
 			MapBlock tmpBlock = itr.next();
 			Point currentPoint = tmpBlock.getMapLocation();
@@ -46,6 +48,7 @@ public class GamePanel extends JPanel
 		time = new Timer(10, new Repainter());
 		GPthread.start();
 		time.start();
+		this.addKeyListener(new UI());
 	}
 	
 	private class Repainter implements ActionListener{

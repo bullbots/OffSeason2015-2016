@@ -1,6 +1,8 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Random;
+import java.util.Scanner;
 
 import javax.swing.JPanel;
 
@@ -21,21 +23,37 @@ public class GameUpdater extends JPanel implements Runnable{
 	
 	public static Point characterLocation;
 	
+	private boolean[][] filledList= new boolean[800][600];
+	
 	public static ArrayList<String> keysHeld = new ArrayList<String>();
 
+	
 	@Override
 	public void run() {
 		//Updater thread initialization code.
 		MapMaster map = new MapMaster();
 		blockList=map.getBlockList();
+		Random rand = new Random();
+		characterLocation=new Point(rand.nextInt(500), rand.nextInt(500));
 		System.out.println("This thread has started: "+Thread.currentThread());
 		MoveCharacter characterData = new MoveCharacter();
+		
+		Scanner scan = new Scanner(System.in);
+		
 		while(true){
 			//All update code goes here
-			characterData.p1Move(Point characterLocation,ArrayList<String> keysHeld);
-			
+			keysHeld.add(scan.next());
+			characterLocation=characterData.p1Move(characterLocation,keysHeld);
+			keysHeld.clear();
 		}
 	}
+	
+	private void fillTheFilledList(){
+		
+		
+	}
+	
+	
 	
 
 }
