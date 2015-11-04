@@ -21,12 +21,12 @@ public class UI implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		keysHeld.remove(KeyEvent.getKeyText(arg0.getKeyCode()));
-		//System.out.println("Released");
+		System.out.println("Released");
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		
+		System.out.println("keyTyped");
 	}
 	
 	public void display(KeyEvent arg0) {
