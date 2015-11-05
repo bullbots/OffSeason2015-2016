@@ -11,7 +11,6 @@ public class MapMaster {
 	private static int mapDensity=50;
 	private final static int MAX_X_DIST=800;
 	private final static int MAX_Y_DIST=600;
-	private static boolean[][] occupiedArray = new boolean[600][800];
 	LinkedList<MapBlock> blocks= new LinkedList<MapBlock>();
 	
 	/**
@@ -38,16 +37,5 @@ public class MapMaster {
 				blocks.add(new MapBlock(new Point(rand.nextInt(700), rand.nextInt(590)), 100, 10));
 			}
 		}
-	}
-
-	/**
-	 * @return the array with occupied data
-	 */
-	public boolean[][] getOccupiedArray() {
-		return occupiedArray;
-	}
-
-	private static void fillOccupiedArrayIndex(Point start,int numX, int numY){
-		
 	}
 }

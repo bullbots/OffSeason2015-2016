@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -53,7 +55,6 @@ public class GamePanel extends JPanel
 		this.setFocusable(true);
 		this.requestFocus();
 		this.addKeyListener(new UI());
-		
 		GPthread.start();
 		time.start();
 	}

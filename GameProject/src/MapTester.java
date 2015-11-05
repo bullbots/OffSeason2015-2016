@@ -11,8 +11,6 @@ public class MapTester {
 	 */
 	public static void main(String[]args){
 		MapMaster test = new MapMaster();
-		boolean [][] test1 = test.getOccupiedArray();
 		test.getBlockList();
-		System.out.println(Arrays.deepToString(test1));
 	}
 }
