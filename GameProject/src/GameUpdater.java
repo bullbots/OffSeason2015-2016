@@ -1,6 +1,7 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,7 +24,7 @@ public class GameUpdater extends JPanel implements Runnable{
 	
 	public static Point characterLocation;
 	
-	private boolean[][] filledList= new boolean[800][600];
+	private static boolean[][] filledList= new boolean[800][600];
 	
 	public static ArrayList<String> keysHeld = new ArrayList<String>();
 
@@ -37,21 +38,35 @@ public class GameUpdater extends JPanel implements Runnable{
 		characterLocation=new Point(rand.nextInt(500), rand.nextInt(500));
 		System.out.println("This thread has started: "+Thread.currentThread());
 		MoveCharacter characterData = new MoveCharacter();
-		
-		Scanner scan = new Scanner(System.in);
-		
+		fillTheFilledList();//This method fills a list of the filled places by the walls.
+		Point updatedCharacterLocation;//This variable is used to test if the new character location is on top of a wall or not.
 		while(true){
 			//All update code goes here
-			for(int x=0; x<keysHeld.size();x++){
-				System.out.println(keysHeld.get(x));
+			
+			updatedCharacterLocation=characterData.p1Move((Point) characterLocation.clone(),keysHeld);
+			if(!filledList[updatedCharacterLocation.x+10][updatedCharacterLocation.y+10]){
+				characterLocation=updatedCharacterLocation;
 			}
-			characterLocation=characterData.p1Move(characterLocation,keysHeld);
+			keysHeld.clear();
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
-	private void fillTheFilledList(){
-		
-		
+	private static void fillTheFilledList(){
+		ListIterator<MapBlock> itr = blockList.listIterator();
+		while(itr.hasNext()){
+			MapBlock tmpBlock=itr.next();
+			for(int i=tmpBlock.getMapLocation().x; i<tmpBlock.getMapLocation().x+tmpBlock.getLength();i++){
+				for(int j=tmpBlock.getMapLocation().y; j<tmpBlock.getMapLocation().y+tmpBlock.getWidth(); j++){
+					filledList[i][j]=true;
+				}
+			}
+		}
 	}
 	
 	

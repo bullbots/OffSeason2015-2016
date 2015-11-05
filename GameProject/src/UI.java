@@ -3,30 +3,28 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class UI implements KeyListener{
-
 	ArrayList<String> keysHeld = new ArrayList<String>();
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		System.out.println("pressed");
+		//System.out.println("pressed");
 		String key = KeyEvent.getKeyText(arg0.getKeyCode());
-		if (key == "w" || key == "a" || key == "s" || key == "d") 
+		key=key.toLowerCase();
+		if (key.equals("w")|| key.equals("a") || key.equals("s") || key.equals("d")) 
 		{
-				GameUpdater.keysHeld.add(KeyEvent.getKeyText(arg0.getKeyCode()));
+			GameUpdater.keysHeld.add(KeyEvent.getKeyText(arg0.getKeyCode()).toLowerCase());
 		}
-		for (String x : GameUpdater.keysHeld) {
-			System.out.println(x);
-		}
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		keysHeld.remove(KeyEvent.getKeyText(arg0.getKeyCode()));
-		System.out.println("Released");
+		//System.out.println("Released");
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		System.out.println("keyTyped");
+		//System.out.println("keyTyped");
 	}
 	
 	public void display(KeyEvent arg0) {
