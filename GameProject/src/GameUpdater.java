@@ -21,12 +21,21 @@ public class GameUpdater extends JPanel implements Runnable{
 	 */
 	public static LinkedList<MapBlock> blockList;
 	
+	/**
+	 * Current point of character location.
+	 */
 	public static Point characterLocation;
 	
 	private static boolean[][] filledList= new boolean[800][600];
 	
+	/**
+	 * List of all keys currently pressed on the keyboard.
+	 */
 	public static ArrayList<String> keysHeld = new ArrayList<String>();
 
+	/**
+	 * List filled with all of the enemies for the game.
+	 */
 	public static LinkedList<Enemy> listOfEnimies = new LinkedList<Enemy>();
 	@SuppressWarnings("unchecked")
 	@Override
@@ -39,7 +48,7 @@ public class GameUpdater extends JPanel implements Runnable{
 		System.out.println("This thread has started: "+Thread.currentThread());
 		MoveCharacter characterData = new MoveCharacter();
 		fillTheFilledList();//This method fills a list of the filled places by the walls.
-		fillEnemyList(listOfEnimies);//This method will fill the map with enemies fillTheFilledList must be run before this.
+		fillEnemyList();//This method will fill the map with enemies fillTheFilledList must be run before this.
 		
 		Point updatedCharacterLocation;//This variable is used to test if the new character location is on top of a wall or not.
 		while(true){
@@ -71,18 +80,11 @@ public class GameUpdater extends JPanel implements Runnable{
 	
 	private boolean validLocation(Point pt){
 		//method that checks all needed point on a component box to make sure that there is not a wall there.
-		return (!filledList[pt.x][pt.y] &&
-				!filledList[pt.x+10][pt.y] &&
-				!filledList[pt.x+20][pt.y] &&
-				!filledList[pt.x+20][pt.y+10] &&
-				!filledList[pt.x+20][pt.y+20] &&
-				!filledList[pt.x+10][pt.y+20] &&
-				!filledList[pt.x][pt.y+20] &&
-				!filledList[pt.x][pt.y+10]
+		return (!filledList[pt.x+10][pt.y+10]
 				);
 	}
 	
-	private static void fillEnemyList(LinkedList<Enemy> enimies){
+	private static void fillEnemyList(){
 		Random rand = new Random();
 		int tmpX;
 		int tmpY;
@@ -93,7 +95,7 @@ public class GameUpdater extends JPanel implements Runnable{
 				Enemy tmpEnemy = new Enemy();
 				tmpEnemy.epositionx=tmpX;
 				tmpEnemy.enemyLife=tmpX;
-				enimies.add(tmpEnemy);
+				listOfEnimies.add(tmpEnemy);
 			}else{
 				i--;
 			}
