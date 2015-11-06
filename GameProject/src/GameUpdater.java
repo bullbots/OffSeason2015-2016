@@ -92,7 +92,10 @@ public class GameUpdater extends JPanel implements Runnable{
 			tmpX=rand.nextInt(800);
 			tmpY=rand.nextInt(600);
 			if(!filledList[tmpX][tmpY]){
-				enemys.add(new Enemy());
+				Enemy tmpEnemy = new Enemy();
+				tmpEnemy.epositionx=tmpX;
+				tmpEnemy.enemyLife=tmpX;
+				enemys.add(tmpEnemy);
 			}else{
 				i--;
 			}
