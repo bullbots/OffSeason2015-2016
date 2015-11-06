@@ -28,6 +28,7 @@ public class GameUpdater extends JPanel implements Runnable{
 	public static ArrayList<String> keysHeld = new ArrayList<String>();
 
 	public static LinkedList<Enemy> listOfEnimies = new LinkedList<Enemy>();
+	@SuppressWarnings("unchecked")
 	@Override
 	public void run() {
 		//Updater thread initialization code.
@@ -43,7 +44,7 @@ public class GameUpdater extends JPanel implements Runnable{
 		Point updatedCharacterLocation;//This variable is used to test if the new character location is on top of a wall or not.
 		while(true){
 			//All update code goes here
-			updatedCharacterLocation=characterData.p1Move((Point) characterLocation.clone(),keysHeld);
+			updatedCharacterLocation=characterData.p1Move((Point) characterLocation.clone(),(ArrayList<String>) keysHeld.clone());
 			if(validLocation(updatedCharacterLocation)){
 				characterLocation=updatedCharacterLocation;
 			}
