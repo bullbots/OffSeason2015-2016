@@ -28,7 +28,7 @@ public class GameUpdater extends JPanel implements Runnable{
 	
 	public static ArrayList<String> keysHeld = new ArrayList<String>();
 
-	public static LinkedList<Enemy> listOfEnimies;
+	public static LinkedList<Enemy> listOfEnimies = new LinkedList<Enemy>();
 	@Override
 	public void run() {
 		//Updater thread initialization code.
@@ -38,8 +38,8 @@ public class GameUpdater extends JPanel implements Runnable{
 		characterLocation=new Point(rand.nextInt(500), rand.nextInt(500));
 		System.out.println("This thread has started: "+Thread.currentThread());
 		MoveCharacter characterData = new MoveCharacter();
-		fillEnemyList(listOfEnimies);
 		fillTheFilledList();//This method fills a list of the filled places by the walls.
+		fillEnemyList(listOfEnimies);//This method will fill the map with enemies fillTheFilledList must be run before this.
 		
 		Point updatedCharacterLocation;//This variable is used to test if the new character location is on top of a wall or not.
 		while(true){
@@ -85,7 +85,7 @@ public class GameUpdater extends JPanel implements Runnable{
 				);
 	}
 	
-	private static void fillEnemyList(LinkedList<Enemy> enemys){
+	private static void fillEnemyList(LinkedList<Enemy> enimies){
 		Random rand = new Random();
 		int tmpX;
 		int tmpY;
@@ -96,7 +96,7 @@ public class GameUpdater extends JPanel implements Runnable{
 				Enemy tmpEnemy = new Enemy();
 				tmpEnemy.epositionx=tmpX;
 				tmpEnemy.enemyLife=tmpX;
-				enemys.add(tmpEnemy);
+				enimies.add(tmpEnemy);
 			}else{
 				i--;
 			}
