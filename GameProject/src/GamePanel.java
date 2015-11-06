@@ -37,6 +37,7 @@ public class GamePanel extends JPanel
 	{
 		super.paintComponent(g);
 		ListIterator<MapBlock> itr=GameUpdater.blockList.listIterator();
+		ListIterator<Enemy> enemItr = GameUpdater.listOfEnimies.listIterator();
 		g.setColor(Color.BLUE);
 		g.fillOval(GameUpdater.characterLocation.x, GameUpdater.characterLocation.y, 20, 20);
 		while(itr.hasNext()){
@@ -45,6 +46,14 @@ public class GamePanel extends JPanel
 			g.setColor(Color.BLACK);
 			g.fill3DRect(currentPoint.x, currentPoint.y, tmpBlock.getLength(), tmpBlock.getWidth(), true);
 		}
+		while(enemItr.hasNext())
+		{
+			Enemy tmpEnemy = enemItr.next();
+			Point enemyPoint = tmpEnemy.update(getLocationOnScreen());
+			g.setColor(Color.RED);
+			g.fillOval(enemyPoint.x, enemyPoint.y, 20, 20);
+		}
+		
 	}
 	/**
 	 * This method should be invoked right after the instantiation of the game panel.
