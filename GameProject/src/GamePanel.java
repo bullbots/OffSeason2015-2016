@@ -37,7 +37,7 @@ public class GamePanel extends JPanel
 	{
 		super.paintComponent(g);
 		ListIterator<MapBlock> itr=GameUpdater.blockList.listIterator();
-		ListIterator<Enemy> enemItr = GameUpdater.listOfEnimies.listIterator();
+		ListIterator<Enemy> enemItr = GameUpdater.listOfEnemies.listIterator();
 		g.setColor(Color.BLUE);
 		g.fillOval(GameUpdater.characterLocation.x, GameUpdater.characterLocation.y, 20, 20);
 		while(itr.hasNext()){
@@ -49,7 +49,7 @@ public class GamePanel extends JPanel
 		while(enemItr.hasNext())
 		{
 			Enemy tmpEnemy = enemItr.next();
-			Point enemyPoint = tmpEnemy.update(getLocationOnScreen());
+			Point enemyPoint = new Point(tmpEnemy.getenemyx(),tmpEnemy.getenemyy());
 			g.setColor(Color.RED);
 			g.fillOval(enemyPoint.x, enemyPoint.y, 20, 20);
 		}

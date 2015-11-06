@@ -36,7 +36,7 @@ public class GameUpdater extends JPanel implements Runnable{
 	/**
 	 * List filled with all of the enemies for the game.
 	 */
-	public static LinkedList<Enemy> listOfEnimies = new LinkedList<Enemy>();
+	public static LinkedList<Enemy> listOfEnemies = new LinkedList<Enemy>();
 	@SuppressWarnings("unchecked")
 	@Override
 	public void run() {
@@ -44,6 +44,13 @@ public class GameUpdater extends JPanel implements Runnable{
 		MapMaster map = new MapMaster();
 		blockList=map.getBlockList();
 		Random rand = new Random();
+		while(characterLocation==null){
+			int tmpX = rand.nextInt(500)+100;
+			int tmpY = rand.nextInt(400)+100;
+			if(validLocation(new Point(tmpX, tmpY))){
+				characterLocation = new Point(tmpX, tmpY);
+			}
+		}
 		characterLocation=new Point(rand.nextInt(500), rand.nextInt(500));
 		System.out.println("This thread has started: "+Thread.currentThread());
 		MoveCharacter characterData = new MoveCharacter();
@@ -57,6 +64,7 @@ public class GameUpdater extends JPanel implements Runnable{
 			if(validLocation(updatedCharacterLocation)){
 				characterLocation=updatedCharacterLocation;
 			}
+			moveEnemies();//Updates the location of all the enemies.
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
@@ -94,11 +102,19 @@ public class GameUpdater extends JPanel implements Runnable{
 			if(!filledList[tmpX][tmpY]){
 				Enemy tmpEnemy = new Enemy();
 				tmpEnemy.epositionx=tmpX;
-				tmpEnemy.enemyLife=tmpX;
-				listOfEnimies.add(tmpEnemy);
+				tmpEnemy.epositiony=tmpY;
+				listOfEnemies.add(tmpEnemy);
 			}else{
 				i--;
 			}
+		}
+	}
+	
+	private static void moveEnemies(){
+		ListIterator<Enemy> itr = listOfEnemies.listIterator();
+		while(itr.hasNext()){
+			Enemy tmpEnemy = itr.next();
+			tmpEnemy.update(new Point(tmpEnemy.getenemyx(), tmpEnemy.getenemyx()));
 		}
 	}
 
