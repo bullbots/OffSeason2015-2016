@@ -50,7 +50,6 @@ public class GameUpdater extends JPanel implements Runnable{
 			if(validLocation(updatedCharacterLocation)){
 				characterLocation=updatedCharacterLocation;
 			}
-			keysHeld.clear();
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
