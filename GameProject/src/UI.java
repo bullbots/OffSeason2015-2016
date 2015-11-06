@@ -8,7 +8,6 @@ public class UI implements KeyListener{
 	public void keyPressed(KeyEvent arg0) {
 		String key = KeyEvent.getKeyText(arg0.getKeyCode());
 		key=key.toLowerCase();
-		System.out.println(key);
 		switch(key){
 		case "w":
 			if(!GameUpdater.keysHeld.contains("w")){
@@ -30,21 +29,39 @@ public class UI implements KeyListener{
 				GameUpdater.keysHeld.add("d");
 			}
 			break;
+		case "i":
+			if(!GameUpdater.keysHeld.contains("i")){
+				GameUpdater.keysHeld.add("i");
+			}
+			break;
+		case "j":
+			if(!GameUpdater.keysHeld.contains("j")){
+				GameUpdater.keysHeld.add("j");
+			}
+			break;
+		case "k":
+			if(!GameUpdater.keysHeld.contains("k")){
+				GameUpdater.keysHeld.add("k");
+			}
+			break;
+		case "l":
+			if(!GameUpdater.keysHeld.contains("l")){
+				GameUpdater.keysHeld.add("l");
+			}
+			break;
 		}
-		System.out.println(GameUpdater.keysHeld.toString());
+		
 
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		GameUpdater.keysHeld.remove(KeyEvent.getKeyText(arg0.getKeyCode()).toLowerCase());
-//		System.out.println("Released " + KeyEvent.getKeyText(arg0.getKeyCode()).toLowerCase());
-	
+		GameUpdater.keysHeld.remove(KeyEvent.getKeyText(arg0.getKeyCode()).toLowerCase());	
 }
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		//System.out.println("keyTyped");
+
 	}
 }
 
