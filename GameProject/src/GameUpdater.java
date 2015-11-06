@@ -42,6 +42,9 @@ public class GameUpdater extends JPanel implements Runnable{
 		Point updatedCharacterLocation;//This variable is used to test if the new character location is on top of a wall or not.
 		while(true){
 			//All update code goes here
+			for(String x: keysHeld){
+				System.out.println(x);
+			}
 			updatedCharacterLocation=characterData.p1Move((Point) characterLocation.clone(),keysHeld);
 			if(validLocation(updatedCharacterLocation)){
 				characterLocation=updatedCharacterLocation;
