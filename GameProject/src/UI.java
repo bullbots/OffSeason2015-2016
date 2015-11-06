@@ -6,39 +6,45 @@ public class UI implements KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		
-		for (String x: GameUpdater.keysHeld){
-			System.out.println(x);
-		}
-		System.out.println("pressed");
 		String key = KeyEvent.getKeyText(arg0.getKeyCode());
 		key=key.toLowerCase();
-		if (key.equals("w")|| key.equals("a") || key.equals("s") || key.equals("d") &&! GameUpdater.keysHeld.contains(key)) 
-		{
-			GameUpdater.keysHeld.add(KeyEvent.getKeyText(arg0.getKeyCode()).toLowerCase());
+		System.out.println(key);
+		switch(key){
+		case "w":
+			if(!GameUpdater.keysHeld.contains("w")){
+				GameUpdater.keysHeld.add("w");
+			}
+			break;
+		case "a":
+			if(!GameUpdater.keysHeld.contains("a")){
+				GameUpdater.keysHeld.add("a");
+			}
+			break;
+		case "s":
+			if(!GameUpdater.keysHeld.contains("s")){
+				GameUpdater.keysHeld.add("s");
+			}
+			break;
+		case "d":
+			if(!GameUpdater.keysHeld.contains("d")){
+				GameUpdater.keysHeld.add("d");
+			}
+			break;
 		}
-		System.out.println(GameUpdater.keysHeld.size());
+		System.out.println(GameUpdater.keysHeld.toString());
 
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		for (String x: GameUpdater.keysHeld){
-			System.out.println(x);
-		}
 		GameUpdater.keysHeld.remove(KeyEvent.getKeyText(arg0.getKeyCode()).toLowerCase());
-		System.out.println("Released " + KeyEvent.getKeyText(arg0.getKeyCode()).toLowerCase());
+//		System.out.println("Released " + KeyEvent.getKeyText(arg0.getKeyCode()).toLowerCase());
 	
 }
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		//System.out.println("keyTyped");
-	}
-	
-	public void display(KeyEvent arg0) {
-		char c = arg0.getKeyChar();
-		System.out.println(c);
 	}
 }
 
