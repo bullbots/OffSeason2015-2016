@@ -8,6 +8,7 @@ public class UI implements KeyListener{
 	public void keyPressed(KeyEvent arg0) {
 		String key = KeyEvent.getKeyText(arg0.getKeyCode());
 		key=key.toLowerCase();
+		System.out.println(key);
 		switch(key){
 		case "w":
 			if(!GameUpdater.keysHeld.contains("w")){
