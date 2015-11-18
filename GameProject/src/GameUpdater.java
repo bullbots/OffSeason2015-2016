@@ -37,6 +37,11 @@ public class GameUpdater extends JPanel implements Runnable{
 	 * List filled with all of the enemies for the game.
 	 */
 	public static LinkedList<Enemy> listOfEnemies = new LinkedList<Enemy>();
+	
+	/**
+	 * List of all bullet objects
+	 */
+	public static LinkedList<Bullet> listOfBullets = new LinkedList<Bullet>();
 	@SuppressWarnings("unchecked")
 	@Override
 	public void run() {
@@ -86,7 +91,7 @@ public class GameUpdater extends JPanel implements Runnable{
 		}
 	}
 	
-	private boolean validLocation(Point pt){
+	public boolean validLocation(Point pt){
 		//method that checks all needed point on a component box to make sure that there is not a wall there.
 		return (!filledList[pt.x+10][pt.y+10]);
 	}
