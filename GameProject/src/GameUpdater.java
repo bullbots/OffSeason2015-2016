@@ -88,8 +88,7 @@ public class GameUpdater extends JPanel implements Runnable{
 	
 	private boolean validLocation(Point pt){
 		//method that checks all needed point on a component box to make sure that there is not a wall there.
-		return (!filledList[pt.x+10][pt.y+10]
-				);
+		return (!filledList[pt.x+10][pt.y+10]);
 	}
 	
 	private static void fillEnemyList(){
