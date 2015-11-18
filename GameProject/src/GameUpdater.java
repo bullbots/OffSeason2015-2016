@@ -91,6 +91,11 @@ public class GameUpdater extends JPanel implements Runnable{
 		}
 	}
 	
+	/**
+	 * Returns true if the location of the object is valid false otherwise
+	 * @param pt Objects point
+	 * @return true if valid location, false otherwise
+	 */
 	public boolean validLocation(Point pt){
 		//method that checks all needed point on a component box to make sure that there is not a wall there.
 		return (!filledList[pt.x+10][pt.y+10]);
