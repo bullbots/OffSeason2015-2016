@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Random;
-import java.util.Scanner;
-
 import javax.swing.JPanel;
 
 
@@ -61,6 +59,7 @@ public class GameUpdater extends JPanel implements Runnable{
 		MoveCharacter characterData = new MoveCharacter();
 		fillTheFilledList();//This method fills a list of the filled places by the walls.
 		fillEnemyList();//This method will fill the map with enemies fillTheFilledList must be run before this.
+		Bullet bullets= new Bullet();
 		
 		Point updatedCharacterLocation;//This variable is used to test if the new character location is on top of a wall or not.
 		while(true){
@@ -70,10 +69,11 @@ public class GameUpdater extends JPanel implements Runnable{
 				characterLocation=updatedCharacterLocation;
 			}
 			moveEnemies();//Updates the location of all the enemies.
+			bullets.fire((ArrayList<String>) keysHeld.clone());
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				System.out.println("Game Update Thread Crash: Going Down NOW.");
 				e.printStackTrace();
 			}
 		}
@@ -96,7 +96,7 @@ public class GameUpdater extends JPanel implements Runnable{
 	 * @param pt Objects point
 	 * @return true if valid location, false otherwise
 	 */
-	public boolean validLocation(Point pt){
+	public static boolean validLocation(Point pt){
 		//method that checks all needed point on a component box to make sure that there is not a wall there.
 		return (!filledList[pt.x+10][pt.y+10]);
 	}
