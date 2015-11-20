@@ -49,9 +49,4 @@ public class Bullet {
 		X = (int)(xComponent * speed) + X;
 		return X;
 	}
-	
-	
-	public void update(){
-		
-	}
 }
