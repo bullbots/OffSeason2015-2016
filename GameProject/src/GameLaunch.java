@@ -1,3 +1,9 @@
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 
 
@@ -13,6 +19,9 @@ public class GameLaunch {
 	 */
 	@SuppressWarnings("javadoc")
 	public static void main(String[]args){
+		//Music code
+		
+		
 		JFrame frame = new JFrame();
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -4,7 +4,7 @@ import java.util.Random;
 public class Enemy {
 	private Point enemyLocation;
 	private int currentDir;
-	
+	int lifePoint=100;
 	//There are 8 moveble directions for the enemies
 	//1 North
 	//2 NorthEast
@@ -103,6 +103,16 @@ public class Enemy {
 
 	public void setEnemyLocation(Point enemyLocation) {
 		this.enemyLocation = enemyLocation;
+	}
+
+
+	public int getLifePoint() {
+		return lifePoint;
+	}
+
+
+	public void setLifePoint(int lifePoint) {
+		this.lifePoint = lifePoint;
 	}
 }
 
