@@ -49,7 +49,7 @@ public class GamePanel extends JPanel
 		while(enemItr.hasNext())
 		{
 			Enemy tmpEnemy = enemItr.next();
-			Point enemyPoint = new Point(tmpEnemy.getenemyx(),tmpEnemy.getenemyy());
+			Point enemyPoint = tmpEnemy.getEnemyLocation();
 			g.setColor(Color.RED);
 			g.fillOval(enemyPoint.x, enemyPoint.y, 20, 20);
 		}

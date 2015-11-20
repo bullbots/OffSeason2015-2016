@@ -108,10 +108,13 @@ public class GameUpdater extends JPanel implements Runnable{
 		for(int i=0; i<20; i++){
 			tmpX=rand.nextInt(800);
 			tmpY=rand.nextInt(600);
-			if(!filledList[tmpX][tmpY]){
+			if(!filledList[tmpX][tmpY] &&
+			   !filledList[tmpX+1][tmpY] &&
+			   !filledList[tmpX][tmpY+1] &&
+			   !filledList[tmpX-1][tmpY] &&
+			   !filledList[tmpX][tmpY-1]){
 				Enemy tmpEnemy = new Enemy();
-				tmpEnemy.epositionx=tmpX;
-				tmpEnemy.epositiony=tmpY;
+				tmpEnemy.setEnemyLocation(new Point(tmpX, tmpY));
 				listOfEnemies.add(tmpEnemy);
 			}else{
 				i--;
@@ -123,7 +126,7 @@ public class GameUpdater extends JPanel implements Runnable{
 		ListIterator<Enemy> itr = listOfEnemies.listIterator();
 		while(itr.hasNext()){
 			Enemy tmpEnemy = itr.next();
-			tmpEnemy.update(new Point(tmpEnemy.getenemyx(), tmpEnemy.getenemyx()));
+			tmpEnemy.update(tmpEnemy.getEnemyLocation());
 		}
 	}
 
