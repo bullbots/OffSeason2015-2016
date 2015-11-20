@@ -5,23 +5,26 @@ public class hitPoints {
 	public static void updateHealth()
 	{
 		
-				
 	}
 
-	public static ArrayList checkHits() 
+	public static ArrayList<String> checkHits() 
 	{
 		ArrayList<String> wasHit = new ArrayList<String>();
-		for (int x = GameUpdater.listOfEnemies.size(); x < 0; x--)
+		for (int y = 0; y == GameUpdater.listOfBullets.size() - 1; y++)
 		{
-			if (GameUpdater.listOfBullets.contains(GameUpdater.listOfEnemies.get(x)))
+			for (int x = 0; x == GameUpdater.listOfEnemies.size() - 1; x++)
 			{
-				wasHit.add(x + "enemy");
+				if (GameUpdater.listOfEnemies.get(x).getEnemyLocation() == GameUpdater.listOfBullets.get(y).getBulletLocation())
+				{
+					wasHit.add(x + "enemy");
+				}
 			}
-		}
-		if (GameUpdater.listOfBullets.contains(GameUpdater.characterLocation)
+			if (GameUpdater.characterLocation == GameUpdater.listOfBullets.get(y).getBulletLocation())
 			{
 				wasHit.add("player");
 			}
+		}
+		
 		return wasHit;
 	}
 }
