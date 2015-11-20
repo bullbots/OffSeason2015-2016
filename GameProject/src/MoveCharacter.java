@@ -12,7 +12,7 @@ public class MoveCharacter {
 		int newY = p1Y;
 		int newX = p1X;
 		
-		if(keys.contains("w")||keys.contains("s")||keys.contains("d")||keys.contains("a")){
+		if((keys.contains("w")||keys.contains("s")||keys.contains("d")||keys.contains("a"))&&!((keys.contains("w")&&keys.contains("s"))||(keys.contains("a")&&keys.contains("d")))){
 			magnitude();
 			direct(keys);
 		}else{
@@ -41,26 +41,41 @@ public class MoveCharacter {
 	public void direct(ArrayList<String> keys){
 		double input = getDirection(keys);
 		
-		if(Math.abs(input - currentDirection)< Math.PI){
+		if(Math.abs(input - currentDirection)< Math.PI/2){
 			currentDirection = input * .2 + currentDirection *  .8;
 		}else{
 			currentDirection = input;
+		}
+		if ((keys.contains("w")&&!keys.contains("s")&&!keys.contains("a")&&!keys.contains("d"))&& Math.PI/4<currentDirection&& currentDirection<3*Math.PI/4){
+			currentDirection = 3* Math.PI/2;
+		}
+		if ((keys.contains("s")&&!keys.contains("w")&&!keys.contains("a")&&!keys.contains("d"))&& 5* Math.PI/4<currentDirection&& currentDirection<7*Math.PI/4){
+			currentDirection = Math.PI/2;
+		}
+		if ((keys.contains("a")&&!keys.contains("w")&&!keys.contains("s")&&!keys.contains("d"))&& 3* Math.PI/4<currentDirection&& currentDirection<5*Math.PI/4){
+			currentDirection = Math.PI;
+		}
+		if ((keys.contains("d")&&!keys.contains("w")&&!keys.contains("s")&&!keys.contains("a"))&& 7* Math.PI/4<currentDirection|| currentDirection<Math.PI/4){
+			currentDirection = 0;
 		}
 		
 	}
 	
 	public void magnitude(){
 		
-		if(velocity < 4){
+		if(velocity < 2){
 			velocity = velocity + .4;
+		}
+		if(velocity >= 2&& velocity <5){
+			velocity = velocity +.2;
 		}
 		
 		
 	}
 	public void magnitudeLess(){
 		
-		if(velocity>0){
-			velocity = velocity - .4;
+		if(velocity>-.2){
+			velocity = velocity - .2;
 		}
 		
 		

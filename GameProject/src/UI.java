@@ -1,6 +1,5 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
 
 public class UI implements KeyListener{
 	
@@ -8,7 +7,6 @@ public class UI implements KeyListener{
 	public void keyPressed(KeyEvent arg0) {
 		String key = KeyEvent.getKeyText(arg0.getKeyCode());
 		key=key.toLowerCase();
-		System.out.println(key);
 		switch(key){
 		case "w":
 			if(!GameUpdater.keysHeld.contains("w")){
@@ -50,7 +48,28 @@ public class UI implements KeyListener{
 				GameUpdater.keysHeld.add("l");
 			}
 			break;
+		case "up":
+			if(!GameUpdater.keysHeld.contains("up")){
+				GameUpdater.keysHeld.add("up");
+			}
+			break;
+		case "down":
+			if(!GameUpdater.keysHeld.contains("down")){
+				GameUpdater.keysHeld.add("down");
+			}
+			break;
+		case "left":
+			if(!GameUpdater.keysHeld.contains("left")){
+				GameUpdater.keysHeld.add("left");
+			}
+			break;
+		case "right":
+			if(!GameUpdater.keysHeld.contains("right")){
+				GameUpdater.keysHeld.add("right");
+			}
+			break;
 		}
+		
 		
 
 	}
