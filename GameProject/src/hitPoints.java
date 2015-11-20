@@ -18,7 +18,7 @@ public class hitPoints {
 				wasHit.add(x + "enemy");
 			}
 		}
-		if (GameUpdater.listOfBullets.contains(GameUpdater.characterLocation)
+		if (GameUpdater.listOfBullets.contains(GameUpdater.characterLocation))
 			{
 				wasHit.add("player");
 			}
