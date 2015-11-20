@@ -69,7 +69,7 @@ public class GameUpdater extends JPanel implements Runnable{
 				characterLocation=updatedCharacterLocation;
 			}
 			moveEnemies();//Updates the location of all the enemies.
-			bullets.fire((ArrayList<String>) keysHeld.clone());
+			//bullets.fire((ArrayList<String>) keysHeld.clone());
 			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
