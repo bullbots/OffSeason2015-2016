@@ -47,7 +47,7 @@ public class Enemy {
 				//Then the character is in quadrent 3
 				//will only move direction 5, 6 or 7
 				if(GameUpdater.validLocation(new Point(tmpEnemyLocation.x, tmpEnemyLocation.y+1))){
-					currentDir=5;
+					currentDir=1;
 				}else if(GameUpdater.validLocation(new Point(tmpEnemyLocation.x-1, tmpEnemyLocation.y+1))){
 					currentDir=6;
 				}else if(GameUpdater.validLocation(new Point(tmpEnemyLocation.x-1, tmpEnemyLocation.y))){
